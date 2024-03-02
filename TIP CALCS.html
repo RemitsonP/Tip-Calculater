@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TIP CALCULATER</title>
+<link rel="icon" href="calculator.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <style>
+        h1{
+            text-align: center;
+            font-family: "Oswald", sans-serif;
+        }
+        label{
+            font-size: 22px;
+            font-family: "Kode Mono", monospace;
+        }
+        .calcs{
+            height: 300px;
+            width: 300px;
+            margin: auto;
+            padding: 50px;
+            border-radius: 15px;
+            background-color: rgba(73, 80, 88, 0.367);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+        }
+        #billAmount{
+            width: 200px;
+            height: 20px;
+            padding: 3px;
+            border-radius: 5px;
+        }
+        #tipPercentage{
+            width: 130px;
+            height: 30px;
+            border-radius: 5px;
+        }
+        button{
+            width: 150px;
+            padding: 5px;
+            font-family: "Kode Mono", monospace;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        #tipAmount1,#tipAmount2{
+            font-family: "Teko", sans-serif;
+        }
+    </style>
+    <h1>TIP CALCULATER</h1>
+    <div class="calcs">
+<label for="billAmount"><b>Enter Bill Amount</b></label>
+<input type="number" placeholder="Enter Bill Amount Here" id="billAmount" min="0" step="0.01">
+<br>
+<label for="tipPercentage"><b>Select Tip Percentage</b></label>
+<select id="tipPercentage">
+<option value="" disabled selected style="display: none;">Tip Percentage %</option>
+<option value="5">5%</option>
+<option value="10">10%</option>
+<option value="15">15%</option>
+<option value="20">20%</option>
+<option value="25">25%</option>
+</select>
+<br>
+<button onclick="calculateTip()">Calculate Tip</button>
+<br>
+<p id="tipAmount1"></p>
+<p id="tipAmount2"></p>
+</div>
+<script>
+function calculateTip() {
+var billAmount = parseFloat(document.getElementById('billAmount').value);
+var tipPercentage = parseFloat(document.getElementById('tipPercentage').value);
+var tipAmount = (billAmount * tipPercentage) / 100;
+var totalAmount = billAmount + tipAmount;
+document.getElementById('tipAmount1').innerText = "Tip: $" + tipAmount.toFixed(2);
+document.getElementById('tipAmount2').innerText = "Total: $" + totalAmount.toFixed(2);
+}
+</script>
+</body>
+</html>
